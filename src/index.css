@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Updated TapPay App Light Mode Tokens (Liquid-Glass Frosted Glacier-Emerald) */
+    --tp-bg: #E8F0F8;
+    --tp-bg-alt: rgba(230, 240, 250, 0.78);
+    --tp-surface: rgba(255, 255, 255, 0.64);
+    --tp-surface-elevated: rgba(255, 255, 255, 0.78);
+    --tp-surface-muted: rgba(241, 245, 249, 0.68);
+    --tp-glass-sheet: rgba(255, 255, 255, 0.86);
+    --tp-border: rgba(255, 255, 255, 0.78);
+    --tp-border-strong: rgba(148, 163, 184, 0.38);
+    --tp-glass-rim: rgba(255, 255, 255, 0.9);
+    --tp-text: #0B1320;
+    --tp-text-secondary: #475569;
+    --tp-text-muted: #64748B;
+    --tp-primary: #059669;
+    --tp-primary-hover: #047857;
+    --tp-primary-soft: rgba(16, 185, 129, 0.16);
+    --tp-info: #0284C7;
+    --tp-info-soft: rgba(2, 132, 199, 0.14);
+    --tp-gold: #D97706;
+    --tp-gold-soft: rgba(245, 158, 11, 0.16);
+    --tp-shadow: 0 8px 24px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(148, 163, 184, 0.18);
+  }
+
+  .dark {
+    /* Dark Mode Tokens (Obsidian-Emerald Flagship matching TapPay App) */
+    --tp-bg: #050B14;
+    --tp-bg-alt: #081221;
+    --tp-surface: rgba(15, 24, 42, 0.56);
+    --tp-surface-elevated: rgba(21, 34, 58, 0.68);
+    --tp-surface-muted: rgba(28, 42, 68, 0.52);
+    --tp-glass-sheet: rgba(12, 20, 36, 0.84);
+    --tp-border: rgba(255, 255, 255, 0.13);
+    --tp-border-strong: rgba(148, 163, 184, 0.26);
+    --tp-glass-rim: rgba(255, 255, 255, 0.16);
+    --tp-text: #F8FAFC;
+    --tp-text-secondary: #94A3B8;
+    --tp-text-muted: #64748B;
+    --tp-primary: #10B981;
+    --tp-primary-hover: #059669;
+    --tp-primary-soft: rgba(16, 185, 129, 0.18);
+    --tp-info: #38BDF8;
+    --tp-info-soft: rgba(56, 189, 248, 0.18);
+    --tp-gold: #F59E0B;
+    --tp-gold-soft: rgba(245, 158, 11, 0.18);
+    --tp-shadow: 0 24px 56px -12px rgba(0, 0, 0, 0.52);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: var(--tp-bg);
+    color: var(--tp-text);
+  }
+
+  body {
+    background-color: var(--tp-bg);
+    color: var(--tp-text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Liquid-Glass Surfaces matching TapPay App GlassPanel */
+.tp-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.04) 100%), var(--tp-surface);
+  border: 1px solid var(--tp-glass-rim);
+  box-shadow: var(--tp-shadow);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+}
+
+.dark .tp-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%), var(--tp-surface);
+}
+
+.tp-glass-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.56) 0%, rgba(255, 255, 255, 0.08) 100%), var(--tp-surface-elevated);
+  border: 1px solid var(--tp-glass-rim);
+  box-shadow: var(--tp-shadow);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.dark .tp-glass-elevated {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), var(--tp-surface-elevated);
+}
+
+.tp-muted-box {
+  background: var(--tp-surface-muted);
+  border: 1px solid var(--tp-border-strong);
+}
+
+/* 3D Card Flip Helpers */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Subtle NFC Radar Ring Keyframes */
+@keyframes nfcPulse {
+  0% {
+    transform: scale(0.62);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+.animate-nfc-ring-1 {
+  animation: nfcPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-nfc-ring-2 {
+  animation: nfcPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.8s infinite;
+}
+
+.animate-nfc-ring-3 {
+  animation: nfcPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) 1.6s infinite;
+}
